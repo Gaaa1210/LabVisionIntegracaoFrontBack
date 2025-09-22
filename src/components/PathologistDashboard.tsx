@@ -68,57 +68,58 @@ export default function PathologistDashboard({ onLogout, onViewExamDetails, onSe
       id: 'lab-a',
       name: 'Lab Vision A',
       icon: Microscope,
-      status: 'online',
-      examsCount: 12
+      status: 'online'
+      
     },
     {
       id: 'lab-b',
       name: 'Lab Vision B',
       icon: Microscope,
-      status: 'online',
-      examsCount: 8
+      status: 'online'
+      
     },
     {
       id: 'lab-c',
       name: 'Lab Vision C',
       icon: Microscope,
-      status: 'offline',
-      examsCount: 5
+      status: 'offline'
+      
     },
     {
       id: 'lab-d',
       name: 'Lab Vision D',
       icon: Microscope,
-      status: 'online',
-      examsCount: 15
+      status: 'online'
+      
     },
     {
       id: 'lab-e',
       name: 'Lab Vision E',
       icon: Microscope,
-      status: 'online',
-      examsCount: 7
+      status: 'online'
+      
+
     },
     {
       id: 'lab-f',
       name: 'Lab Vision F',
       icon: Microscope,
-      status: 'offline',
-      examsCount: 3
+      status: 'offline'
+      
     },
     {
       id: 'lab-g',
       name: 'Lab Vision G',
       icon: Microscope,
-      status: 'online',
-      examsCount: 11
+      status: 'online'
+      
     },
     {
       id: 'lab-h',
       name: 'Lab Vision H',
       icon: Microscope,
-      status: 'online',
-      examsCount: 9
+      status: 'online'
+      
     }
   ]);
 

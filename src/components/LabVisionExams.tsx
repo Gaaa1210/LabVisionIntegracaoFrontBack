@@ -45,7 +45,7 @@ export default function LabVisionExams({
   const [pendingExams] = useState<PendingExam[]>([
     {
       id: '2',
-      patient: 'João Carlos Oliveira',
+      patient: 'gostoso Carlos Oliveira',
       type: 'Análise Histopatológica',
       date: '2024-01-18',
       priority: 'alta',

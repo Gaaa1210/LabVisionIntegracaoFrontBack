@@ -26,51 +26,7 @@ export default function LabVisionMeasurement({
   const [isComplete, setIsComplete] = useState(false);
   const [currentStep, setCurrentStep] = useState('Preparação');
 
-  // Mock patient data baseado no examId
-  const [patientInfo] = useState(() => {
-    const patients = {
-      '2': { 
-        name: 'João Carlos Oliveira', 
-        age: 45, 
-        gender: 'M',
-        type: 'Análise Histopatológica',
-        doctor: 'Dr. Carlos Mendes',
-        priority: 'alta'
-      },
-      '3': { 
-        name: 'Ana Paula Costa', 
-        age: 32, 
-        gender: 'F',
-        type: 'Citologia Cervical',
-        doctor: 'Dra. Maria Fernanda',
-        priority: 'media'
-      },
-      '5': { 
-        name: 'Pedro Santos Lima', 
-        age: 58, 
-        gender: 'M',
-        type: 'Biópsia de Próstata',
-        doctor: 'Dr. Roberto Silva',
-        priority: 'alta'
-      },
-      '6': { 
-        name: 'Luciana Rocha', 
-        age: 28, 
-        gender: 'F',
-        type: 'Análise de Linfonodo',
-        doctor: 'Dr. João Pereira',
-        priority: 'baixa'
-      }
-    };
-    return patients[examId as keyof typeof patients] || { 
-      name: 'Paciente não encontrado', 
-      age: 0, 
-      gender: 'N/A',
-      type: 'Tipo não identificado',
-      doctor: 'Médico não identificado',
-      priority: 'media'
-    };
-  });
+  
 
   const steps = [
     'Preparação',
@@ -127,25 +83,8 @@ export default function LabVisionMeasurement({
     setCurrentStep('Preparação');
   };
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
-
-  const getPriorityBadge = (priority: string) => {
-    switch (priority) {
-      case 'alta':
-        return <Badge variant="destructive">Alta</Badge>;
-      case 'media':
-        return <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">Média</Badge>;
-      case 'baixa':
-        return <Badge variant="secondary" className="bg-green-100 text-green-800">Baixa</Badge>;
-      default:
-        return null;
-    }
-  };
-
+  
+  
   return (
     <div className="h-screen w-screen bg-slate-900 flex flex-col overflow-hidden relative">
       {/* Botão Voltar - Fixo no canto superior direito */}
