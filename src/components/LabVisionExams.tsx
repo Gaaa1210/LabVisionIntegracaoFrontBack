@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { ArrowLeft, Eye, Microscope, User, Calendar, Play } from 'lucide-react';
-import Header from './Header';
 
 interface PendingExam {
   id: string;
@@ -100,61 +99,68 @@ export default function LabVisionExams({
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Header userType="pathologist" onLogout={onLogout} />
-      
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Estatísticas */}
+    <div className="h-screen w-screen bg-slate-900 flex flex-col overflow-hidden relative">
+      {/* Botão Voltar - Fixo no canto superior direito */}
+      <div className="absolute top-2 right-2 z-10">
+        <Button
+          variant="ghost"
+          onClick={onBack}
+          size="sm"
+          className="text-slate-300 hover:text-white hover:bg-slate-800/80 backdrop-blur-sm h-8 px-3 rounded-full border border-slate-700/50"
+        >
+          <ArrowLeft className="w-3 h-3 mr-1" />
+          <span className="text-xs">Voltar</span>
+        </Button>
+      </div>
 
-
-        {/* Tabela de Exames */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <Microscope className="w-5 h-5 mr-2 text-blue-600" />
-              Exames Pendentes - {labInfo.name}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Paciente</TableHead>
-                  <TableHead>Tipo de Exame</TableHead>
-                  <TableHead>Médico Solicitante</TableHead>
-                  <TableHead>Data</TableHead>
-                  <TableHead></TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
+      {/* Layout compacto para iPhone 5 landscape (568x320) */}
+      <div className="flex-1 flex items-center justify-center p-2">
+        
+        {/* Card de Exames Pendentes */}
+        <div className="w-full h-full max-h-[300px]">
+          <Card className="bg-slate-800 border-slate-700 h-full">
+            <CardHeader className="pb-2 pt-3 px-3">
+              <CardTitle className="text-white flex items-center text-sm">
+                <Microscope className="w-3 h-3 mr-1 text-blue-400" />
+                Exames Pendentes - {labInfo.name}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-3 pt-0 h-[calc(100%-60px)] overflow-y-auto">
+              <div className="space-y-2">
                 {pendingExams.map((exam) => (
-                  <TableRow key={exam.id}>
-                    <TableCell>
-                      <div>
-                        <div className="text-slate-800">{exam.patient}</div>
-                        <div className="text-xs text-slate-500">{exam.age} anos • {exam.gender === 'M' ? 'Masculino' : 'Feminino'}</div>
+                  <div 
+                    key={exam.id} 
+                    className="bg-slate-700 rounded-lg p-3 border border-slate-600"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <div className="text-white text-sm">{exam.patient}</div>
+                        <div className="text-xs text-slate-400 mt-1">
+                          {exam.age} anos • {exam.gender === 'M' ? 'M' : 'F'} • {exam.type}
+                        </div>
+                        <div className="text-xs text-slate-500 mt-1">
+                          {exam.requestingDoctor} • {new Date(exam.date).toLocaleDateString('pt-BR')}
+                        </div>
                       </div>
-                    </TableCell>
-                    <TableCell>{exam.type}</TableCell>
-                    <TableCell>{exam.requestingDoctor}</TableCell>
-                    <TableCell>{new Date(exam.date).toLocaleDateString('pt-BR')}</TableCell>
-                    <TableCell>
-                      <Button
-                        size="sm"
-                        onClick={() => onStartMeasurement(exam.id)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white"
-                      >
-                        <Play className="w-4 h-4 mr-1" />
-                        Iniciar Medição
-                      </Button>
-                    </TableCell>
-                  </TableRow>
+                      <div className="flex items-center space-x-2">
+                        {getPriorityBadge(exam.priority)}
+                        <Button
+                          size="sm"
+                          onClick={() => onStartMeasurement(exam.id)}
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-2 h-6 text-xs"
+                        >
+                          <Play className="w-3 h-3 mr-1" />
+                          Iniciar
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
                 ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-      </main>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 }
