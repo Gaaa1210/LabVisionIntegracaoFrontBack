@@ -45,11 +45,6 @@ export default function UnlockDevicePage({ deviceName, onUnlock, onCancel, onLog
             <ArrowLeft className="w-4 h-4 mr-2" />
             Voltar ao Dashboard
           </Button>
-          
-          <h2 className="text-2xl text-slate-800 mb-2">Autenticação de Segurança</h2>
-          <p className="text-slate-600">
-            Confirme sua identidade para acessar o dispositivo Lab Vision
-          </p>
         </div>
 
         {/* Card de Autenticação Centralizado */}

@@ -164,12 +164,12 @@ export default function PathologistDashboard({ onLogout, onViewExamDetails, onSe
           
           <Card>
             <CardContent className="p-6">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between bg-[rgba(0,0,0,0)]">
                 <div>
                   <p className="text-sm text-slate-600">Concluídos Hoje</p>
                   <p className="text-2xl text-slate-800">3</p>
                 </div>
-                <User className="w-8 h-8 text-green-600" />
+                <User className="w-8 h-8 text-blue-600" />
               </div>
             </CardContent>
           </Card>
@@ -182,8 +182,7 @@ export default function PathologistDashboard({ onLogout, onViewExamDetails, onSe
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center justify-center">
-                  <Building2 className="w-5 h-5 mr-2 text-blue-600" />
-                  Lab Vision Disponíveis
+                  Máquinas Disponíveis
                 </CardTitle>
               </CardHeader>
               <CardContent>
